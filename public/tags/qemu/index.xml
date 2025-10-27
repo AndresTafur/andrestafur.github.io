@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Qemu on Jorge Andres Dev (dot) Com</title><link>andrestafur.github.io/tags/qemu/</link><description>Recent content in Qemu on Jorge Andres Dev (dot) Com</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Fri, 15 Aug 2025 20:22:05 -0500</lastBuildDate><atom:link href="andrestafur.github.io/tags/qemu/index.xml" rel="self" type="application/rss+xml"/><item><title>Kubernetes in Qemu</title><link>andrestafur.github.io/posts/k8s-on-qemu/</link><pubDate>Fri, 15 Aug 2025 20:22:05 -0500</pubDate><guid>andrestafur.github.io/posts/k8s-on-qemu/</guid><description>&lt;h1 id="introduction"&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;The goal of this excercise is to have a full kubernetes cluster installation on top of heterogeneous qemu virtual machines as worker nodes.&lt;/p&gt;
+&lt;p&gt;We&amp;rsquo;ll need to:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Prepare the host and virtual network&lt;/li&gt;
+&lt;li&gt;Create the virtual machines&lt;/li&gt;
+&lt;li&gt;Install k8s worker and create a control plane&lt;/li&gt;
+&lt;li&gt;Join worker vms to the cluster&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Something similar to:&lt;/p&gt;
+&lt;p&gt;&lt;img src="intro.svg" alt="Virtual Network"&gt;&lt;/p&gt;
+&lt;p&gt;Each worker will be a different Virtual Machine running Debian GNU/Linux on Qemu.&lt;/p&gt;
+&lt;h1 id="preparing-the-host-and-virtual-network"&gt;Preparing the host and virtual network&lt;/h1&gt;
+&lt;p&gt;Options like VDE and TUN/TAP can be considered here for virtual networking, we&amp;rsquo;ll be using the latter:&lt;/p&gt;</description></item></channel></rss>
