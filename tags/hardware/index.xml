@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hardware on Jorge Andres Tafur</title>
+    <link>//localhost:1313/tags/hardware/</link>
+    <description>Recent content in Hardware on Jorge Andres Tafur</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 15 Aug 2025 20:22:05 -0500</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/hardware/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Memory alignment</title>
+      <link>//localhost:1313/posts/memory_alignment/</link>
+      <pubDate>Fri, 15 Aug 2025 20:22:05 -0500</pubDate>
+      <guid>//localhost:1313/posts/memory_alignment/</guid>
+      <description>&lt;p&gt;Alignment means that values of a given type must be stored in memory at an address that is a multiple of some number of bytes (the type’s alignment).&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Monotonic clocks</title>
+      <link>//localhost:1313/posts/monotonic_clock/</link>
+      <pubDate>Fri, 15 Aug 2025 20:22:05 -0500</pubDate>
+      <guid>//localhost:1313/posts/monotonic_clock/</guid>
+      <description>&lt;p&gt;Wall clock vs. Monotonic clock&lt;/p&gt;&#xA;&lt;p&gt;Wall clock: the “real world” time (time.Now()), which can jump forward/backward if the system time is adjusted (e.g. NTP, manual clock change, daylight saving).&lt;/p&gt;&#xA;&lt;p&gt;Monotonic clock: a clock that only moves forward at a constant rate. It’s not affected by system time changes. It’s ideal for measuring elapsed time.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

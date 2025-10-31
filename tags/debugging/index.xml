@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Debugging on Jorge Andres Tafur</title>
+    <link>//localhost:1313/tags/debugging/</link>
+    <description>Recent content in Debugging on Jorge Andres Tafur</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 15 Aug 2025 20:22:05 -0500</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/debugging/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DWARF debugging information</title>
+      <link>//localhost:1313/posts/dwarf/</link>
+      <pubDate>Fri, 15 Aug 2025 20:22:05 -0500</pubDate>
+      <guid>//localhost:1313/posts/dwarf/</guid>
+      <description>&lt;h1 id=&#34;dwarf-debugging&#34;&gt;Dwarf debugging&lt;/h1&gt;</description>
+    </item>
+  </channel>
+</rss>

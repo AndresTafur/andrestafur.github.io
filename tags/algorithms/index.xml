@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Algorithms on Jorge Andres Tafur</title>
+    <link>//localhost:1313/tags/algorithms/</link>
+    <description>Recent content in Algorithms on Jorge Andres Tafur</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 15 Aug 2025 20:22:05 -0500</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/algorithms/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Peters algorithm</title>
+      <link>//localhost:1313/posts/peters_algo/</link>
+      <pubDate>Fri, 15 Aug 2025 20:22:05 -0500</pubDate>
+      <guid>//localhost:1313/posts/peters_algo/</guid>
+      <description>&lt;h1 id=&#34;how-did-it-break&#34;&gt;How did it break?&lt;/h1&gt;&#xA;&lt;p&gt;instruction reordering&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Compiler asm reorganization&lt;/li&gt;&#xA;&lt;li&gt;Instruction pipeline reordering&#xA;&lt;ul&gt;&#xA;&lt;li&gt;microop breaking (this is hardware stuff)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Code Writing on Jorge Andres Tafur</title>
+    <link>//localhost:1313/tags/code-writing/</link>
+    <description>Recent content in Code Writing on Jorge Andres Tafur</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 15 Aug 2025 20:22:05 -0500</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/code-writing/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Expressive code</title>
+      <link>//localhost:1313/posts/expressiveness/</link>
+      <pubDate>Fri, 15 Aug 2025 20:22:05 -0500</pubDate>
+      <guid>//localhost:1313/posts/expressiveness/</guid>
+      <description>&lt;h1&gt;&lt;/h1&gt;&#xA;&lt;p&gt;This comes from Kevlin Henney&amp;rsquo;s talk:&lt;/p&gt;&#xA;&lt;p&gt;if {&#xA;return a&#xA;} else {&#xA;return b&#xA;}&lt;/p&gt;&#xA;&lt;p&gt;might be better than:&lt;/p&gt;&#xA;&lt;p&gt;if {&#xA;return a&#xA;}&lt;/p&gt;&#xA;&lt;p&gt;return b&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Two different levels of &amp;ldquo;importance&amp;rdquo;&lt;/li&gt;&#xA;&lt;li&gt;Can become expression -&amp;gt; move to declarative type of thing (like in rust)&lt;/li&gt;&#xA;&lt;/ol&gt;</description>
+    </item>
+  </channel>
+</rss>

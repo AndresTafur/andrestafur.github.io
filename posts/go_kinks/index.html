@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Notes on Golang | Jorge Andres Tafur</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Design Principles
+Orthogonality: Pieces are independent to each other
+Simplicity: less techniques (inheritance, vtable overrides)
+Readability: Reduce clutter and noise
+Untyped constants
+An untyped constant is pretty much a literal; It doesnt have a type of its own altough it haves a default type that is used when no other type can be inferred.
+For example this works:
+const x = 1
+var y int = x
+var z byte = x
+var w float = x">
+    <meta name="generator" content="Hugo 0.152.2">
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="../../ananke/css/main.min.css" >
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="//localhost:1313/posts/go_kinks/">
+    
+
+    <meta property="og:url" content="//localhost:1313/posts/go_kinks/">
+  <meta property="og:site_name" content="Jorge Andres Tafur">
+  <meta property="og:title" content="Notes on Golang">
+  <meta property="og:description" content="Design Principles Orthogonality: Pieces are independent to each other Simplicity: less techniques (inheritance, vtable overrides) Readability: Reduce clutter and noise
+Untyped constants An untyped constant is pretty much a literal; It doesnt have a type of its own altough it haves a default type that is used when no other type can be inferred.
+For example this works:
+const x = 1 var y int = x var z byte = x var w float = x">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-08-15T20:22:05-05:00">
+    <meta property="article:modified_time" content="2025-08-15T20:22:05-05:00">
+    <meta property="article:tag" content="Golang">
+
+  <meta itemprop="name" content="Notes on Golang">
+  <meta itemprop="description" content="Design Principles Orthogonality: Pieces are independent to each other Simplicity: less techniques (inheritance, vtable overrides) Readability: Reduce clutter and noise
+Untyped constants An untyped constant is pretty much a literal; It doesnt have a type of its own altough it haves a default type that is used when no other type can be inferred.
+For example this works:
+const x = 1 var y int = x var z byte = x var w float = x">
+  <meta itemprop="datePublished" content="2025-08-15T20:22:05-05:00">
+  <meta itemprop="dateModified" content="2025-08-15T20:22:05-05:00">
+  <meta itemprop="wordCount" content="4322">
+  <meta itemprop="keywords" content="Golang">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Notes on Golang">
+  <meta name="twitter:description" content="Design Principles Orthogonality: Pieces are independent to each other Simplicity: less techniques (inheritance, vtable overrides) Readability: Reduce clutter and noise
+Untyped constants An untyped constant is pretty much a literal; It doesnt have a type of its own altough it haves a default type that is used when no other type can be inferred.
+For example this works:
+const x = 1 var y int = x var z byte = x var w float = x">
+
+	
+  </head><body class="ma0 avenir bg-near-white development">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="../../" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        Jorge Andres Tafur
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="../../" title="Home page">
+              Home
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="../../posts/" title="Posts page">
+              Posts
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  
+  <article class="flex-l mw8 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">Notes on Golang</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2025-08-15T20:22:05-05:00">August 15, 2025</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h2 id="design-principles">Design Principles</h2>
+<p>Orthogonality: Pieces are independent to each other
+Simplicity: less techniques (inheritance, vtable overrides)
+Readability: Reduce clutter and noise</p>
+<h2 id="untyped-constants">Untyped constants</h2>
+<p>An untyped constant is pretty much a literal; It doesnt have a type of its own altough it haves a default type that is used when no other type can be inferred.</p>
+<p>For example this works:</p>
+<p>const x = 1
+var y int = x
+var z byte = x
+var w float = x</p>
+<p>This doesnt:</p>
+<p>const x int = 1
+var y int = x
+var z byte = x
+var w float = x</p>
+<h1 id="consts-case">Consts case</h1>
+<p>Given that golang uses the first letter case to know if something is exported, having consts like INDEX_NUM, or PI will collide with this feature</p>
+<h1 id="array-initialization">Array initialization</h1>
+<p>var x = [&hellip;]int{10, 20, 30}</p>
+<ul>
+<li>Array size is part of the type. We cannot assign an array of different size to an existing array variable</li>
+<li>the zero value for an array is the zero of the type, int  will be 0&rsquo;s</li>
+<li>Arrays are comparable with == and !=</li>
+<li>Arbitrary indexes  var x = [12]int{1, 5: 4, 6, 10: 100, 15} This creates an array of 12 ints with the following values: [1, 0, 0, 0, 0, 4, 6, 0, 0, 0, 100, 15].</li>
+</ul>
+<h1 id="slices">Slices</h1>
+<p>Without the size or the three dots we have the slice (backed by an array)</p>
+<p>var x = []int{10, 20, 30}</p>
+<ul>
+<li>slices don&rsquo;t have the size as part of the type so different sizes can be considered the same type.</li>
+<li>the zero value for a slice is nil (like a pointer)</li>
+<li>Slices are not comparable with == or !=, but nil can be compared with those operators</li>
+<li>An slice like
+var x = []int
+x == nil   will be true
+Other comparisions like == and != for slices are not allowed</li>
+<li>The zero slice var x = []int{} will compare to nill as false x == nil resolves to false, while var x = []int will compare to nil as true</li>
+<li>Given that a slice of a slice shares the same backing array, when using append() overwrites can happen, use a three part slice expression to limit the append capacity  start:end:capacity, if defined capacity is reached a new backing array will be created avoiding overwrite</li>
+<li>to create an independent array use the &ldquo;copy&rdquo; function</li>
+</ul>
+<h1 id="maps">Maps</h1>
+<ul>
+<li>nil map: var nilMap map[string]int</li>
+<li>Empty map: totalWins := map[string]int{}</li>
+<li>Initialized map: teams := map[string][]string { &ldquo;Orcas&rdquo;: []string{&ldquo;Fred&rdquo;,&ldquo;Ralph&rdquo;, &ldquo;Bijou&rdquo;}, &ldquo;Lions&rdquo;: []string{&ldquo;Waldo&rdquo;,&ldquo;Raul&rdquo;}, }</li>
+<li>To create one with default size use make:   ages := make(map[int][]string, 10)</li>
+<li>maps are not comparable, only compares to nil</li>
+<li>The syntactic suger of  val := MyMap[&ldquo;a&rdquo;] and the idiomatic val, ok := MyMap[&ldquo;a&rdquo;] is actually handled at compiler level, that expression is switched to mapaccess1(typ, m, &amp;k) or  mapaccess2(typ, m, &amp;k) depending on the case, see runtime/map.go</li>
+<li>To remove one entry use delete(m, key)</li>
+</ul>
+<h1 id="sets">Sets</h1>
+<p>They dont exist in golang&hellip;
+But they can be simulated through a Map:  map[TYPE]bool, set it to true if it exist, maps guarantees no duplicity.</p>
+<ul>
+<li>if using bool it will use 1 byte</li>
+<li>if using struct it will use 0 extra bytes: map[int]struct{}{}</li>
+<li>prefer bool approach unless the map is huge</li>
+</ul>
+<h1 id="structs">Structs</h1>
+<ul>
+<li>We can skip the value part when creating a literal if we pass all the values in the same order:</li>
+</ul>
+<p>julia := person{
+&ldquo;Julia&rdquo;,
+40,
+&ldquo;cat&rdquo;,
+}</p>
+<ul>
+<li>
+<p>If all the types in a struct is comparable then the struct will be comparable, if it has maps, slices, channels and functions it will not be comparable</p>
+</li>
+<li>
+<p>Two different typed structs cannot be compared since they are different types</p>
+</li>
+<li>
+<p>A struct can be converted into another IFF the structs have the same field names, same types and in the same order. Then they can be compared</p>
+</li>
+<li>
+<p>an anonymous struct can be compared and assigned to a typed struct var if the same fields names, types and order are equal</p>
+</li>
+</ul>
+<p>struct{}:  empty struct uses no memory.</p>
+<h1 id="iteration">Iteration</h1>
+<p>It only has for ASSIGN;COND;INCR, for COND, for { },  for k,v range []. There is no do-while it needs an if inside</p>
+<p>in the range one the _ can be used to ignore the key in the assign, the second argument can be ignored entirely like so:
+for k range []</p>
+<h1 id="swtiches">Swtiches</h1>
+<p>There are switch expressions:</p>
+<p>switch x {
+case A:
+case B:
+}</p>
+<p>and blank switches</p>
+<p>switch {
+case x == A:
+case x &gt; B:
+}</p>
+<p>If all the comparisions in a blank switch are equal, considere using the switch expression option</p>
+<ul>
+<li>
+<p>It has a break implicit, and empty cases are allowed, for muticase use  &ldquo;case 1,2,4:&rdquo;</p>
+</li>
+<li>
+<p>In case a fall through is needed there is a keyword &ldquo;fallthrough&rdquo; but consider not using it</p>
+</li>
+</ul>
+<p>if break is written it will stop the switch execution not the parent control structure define labels for it:</p>
+<p>loop:
+for x range []{
+switch x {
+case &lsquo;a&rsquo;:
+break loop
+}
+}</p>
+<h1 id="goto">goto</h1>
+<p>It is allowed in golang, but use it only when a flag is littering and other options are convoluted.</p>
+<h1 id="functions">Functions</h1>
+<h1 id="accessing-os-arguments">Accessing os arguments:</h1>
+<p>There is a slice for that: os.Args</p>
+<h2 id="variadic">variadic</h2>
+<p>It is mapped into a slice</p>
+<p>func Decorate(c Client, ds &hellip;Decorator){
+for _, decorate := range ds {&hellip;}
+}</p>
+<h2 id="named-returns">Named returns:</h2>
+<p>The return variables can be declared in the function definition and used:</p>
+<p>func divAndRemainder(numerator int, denominator int) (result int, remainder int, err error) {
+if denominator == 0 {
+err = errors.New(&ldquo;cannot divide by zero&rdquo;)
+return result, remainder, err
+}</p>
+<p>result, remainder = numerator/denominator, numerator%denominator
+return   //allowed but you are making your reader to scan all the code to find the values, dont do this
+}</p>
+<h2 id="signatures">Signatures</h2>
+<p>A function type in Go consists of:</p>
+<ul>
+<li>The parameter list (number, order, and types of parameters).</li>
+<li>The result list (number, order, and types of return values).</li>
+</ul>
+<p>func add(i int, j int) int { return i + j }
+func sub(i int, j int) int { return i - j }
+func mul(i int, j int) int { return i * j }
+func div(i int, j int) int { return i / j }</p>
+<p>var opMap = map[string]func(int, int) int{
+&ldquo;+&rdquo;: add,
+&ldquo;-&rdquo;: sub,
+&ldquo;*&rdquo;: mul,
+}</p>
+<p>better yet, we can define a type:</p>
+<p>type opFuncType func(int,int) int</p>
+<p>And use it like:</p>
+<p>var opMap = map[string]opFuncType {
+// same as before
+}</p>
+<h2 id="anonymous-functions">Anonymous functions</h2>
+<p>They are supported, mostly used for defer and goroutines:</p>
+<p>{
+func(j int){
+&hellip;
+}(3)</p>
+<p>}</p>
+<h1 id="defer">defer</h1>
+<p>defer can be invoked multiple times it will be Last in first out.</p>
+<p>defer runs after the return, to modify any returned values of the function named returns are needed</p>
+<h3 id="pointers">Pointers</h3>
+<p>x := 10
+p := &amp;x  or var p *int = &amp;x</p>
+<p>will be similar to</p>
+<p>var p = new(int)</p>
+<p>Using pointers increases the amount of work that the GC needs to perform</p>
+<p>Of course passing a pointer requires around 1 ns, while passing by value can take some more time, 1ms per 10mb of data.</p>
+<p>&ldquo;A 100-byte data structure takes around 10 nanoseconds to be returned, but a pointer to that data structure takes about 30 nano‐
+seconds. Once your data structures are larger than a megabyte, the performance advantage flips. It takes nearly 2 milliseconds to return 10 megabytes of data, but a little more than half a millisecond to return a pointer to it.&rdquo;</p>
+<h1 id="enums">Enums</h1>
+<p>They dont exist, so define a custom type and use a &ldquo;iota&rdquo; for auto incrementing</p>
+<p>type MailCategory int</p>
+<p>const (
+Uncategorized MailCategory = iota
+Personal
+Spam
+Social
+Advertisements
+)</p>
+<p>Use iota for “internal” purposes only, writing explicit values can be more expressive specially if there is an external doc (like a spec)</p>
+<h2 id="interfaces">Interfaces</h2>
+<p>An interface reference has internally a Type and a Value field, if the Type exists then the ref is not nil:</p>
+<p>var s *string
+var i interface{}  //here i==nil is true, Type is nil
+i = s     // here i == nil is False, Type now is *string</p>
+<h1 id="function-adapters">Function Adapters</h1>
+<p>Functions are first-class and have a type func(theargs),</p>
+<p>This is a function type:</p>
+<p>type ClientFunc func(*http.Request)(*http.Response, error)</p>
+<p>and given that it is a type we can define a method for it:</p>
+<p>func (f ClientFunc) Do(r *http.Request)(*http.Response, error){
+return f(r)
+}</p>
+<p>Using it we can adapt a function as an &ldquo;object&rdquo; implementing an interface like so:</p>
+<p>type Handler interface {
+MyFunc(string, int)
+}</p>
+<p>func FirstClass(s string, i int) {
+fmt.Printf(&quot;%v **** %v&quot;, s, i)
+}</p>
+<p>type FuncAdapter func(s string, i int)</p>
+<p>func (g FuncAdapter) MyFunc(s string, i int) {
+g(s, i)
+}</p>
+<p>func main() {
+var ih Handler = FuncAdapter(FirstClass)
+ih.MyFunc(&ldquo;a&rdquo;, 3)
+}</p>
+<h1 id="type-assertions">Type assertions</h1>
+<p>Done through .(type) example:</p>
+<p>type MyType int</p>
+<p>m MyType = 10
+i, ok := m.(int)  //if i is int it is assigned.</p>
+<h1 id="aliases">aliases</h1>
+<p>type Bar Foo  //this creates a new type</p>
+<p>type Bar = Foo //this is an alias for the same type</p>
+<p>using an alias allows to assign the variable to the original type</p>
+<p>var x Foo = Bar{&hellip;.}</p>
+<p>An alias will be rewritten so if a new method is defined for the alias, the original one gets it too</p>
+<p>func (b Bar) MyNewMethod(){</p>
+<p>}</p>
+<p>y := Foo {}
+y.MyNewMethod()       // this works</p>
+<p>The alias disappears after type checking, so they are effectively the same type.</p>
+<h2 id="errors">Errors</h2>
+<p>When wrapping errors, you cannot easily do type assertion or switch assertion, for this we have two functions</p>
+<p>errors.Is: Checks if any error/wrapped error matches an instance (like a const) (comparison)
+errors.As: Checks if any error/wrapped error matches a type and retrieves it (extraction)</p>
+<p>the first one will compare every wrapped error to the type and return true if found.
+The problem with this is that it uses == so if the errors are not comparable we&rsquo;ll need to implement the Is method:</p>
+<p>func (me MyErr) Is(target error) bool {
+if me2, ok := target.(MyErr); ok {
+return reflect.DeepEqual(me, me2)
+}
+}</p>
+<p>r.Read will return io.EOF as an error althoug it is not really an error.
+r.Read can return what it read before the EOF, so the error handling is a bit different here</p>
+<ul>
+<li>
+<p>Ad-hoc errors: return errors.New(&ldquo;x must be non-negative&rdquo;)</p>
+</li>
+<li>
+<p>typed errors:</p>
+<p>type NotFoundError struct {
+ID string
+}</p>
+</li>
+<li>
+<p>sentinel errors:</p>
+</li>
+</ul>
+<p>var ErrEOF = errors.New(&ldquo;EOF&rdquo;)</p>
+<p>A sentinel error is a predeclared, exported variable that represents a specific condition. The name comes from a sentinel value: a distinguished constant used to signal a condition.  var ErrEOF = errors.New(&ldquo;EOF&rdquo;)</p>
+<h1 id="recover">Recover</h1>
+<p>Recover function is called within defer to recover from a panicking goroutine:</p>
+<p>func(){
+defer func() {
+if v := recover(); v != nil {
+fmt.Println(v)
+}
+}()
+&hellip;
+}</p>
+<h2 id="stack-vs-heap">Stack vs Heap</h2>
+<p>If we call a func and pass a pointer for it to fill the location will likely be in the stack</p>
+<p>func mine(){</p>
+<p>var ptr = &hellip;</p>
+<p>other(ptr)            //ptr data will be allocated in the stack of &ldquo;mine&rdquo;</p>
+<p>}</p>
+<p>func mine() {
+var ptr = other()   // the data will be allocated in the heap so other can give it back to mine
+}</p>
+<p>func other(){
+var ptr = &hellip;
+return ptr
+}</p>
+<p>Allocating in the heap means more work for the sweeper/gc</p>
+<h1 id="shadowing">Shadowing</h1>
+<p>Here x is shadowed by the other x given that := only reuses vars within the same block</p>
+<p>func main() {
+x := 10
+if x &gt; 5 {
+x, y := 5, 20
+fmt.Println(x, y)
+}
+fmt.Println(x)
+}</p>
+<p>Go considers things like int, string, make, close, nil, true, false, predeclared identifiers and defines them in the universe block. they can be shadowed</p>
+<h1 id="go-runtime-internals">Go runtime internals</h1>
+<ul>
+<li>sysmon</li>
+<li>scheduler</li>
+<li>GC
+<ul>
+<li>Pacer</li>
+<li>Sweeper</li>
+<li></li>
+</ul>
+</li>
+</ul>
+<h1 id="prolog-and-epilogue">Prolog and epilogue</h1>
+<p>All go functions gets a prologe (here it checks there is enough stack space for the call) and an epilogue inserted by the compiler</p>
+<h1 id="preemption-in-safe-points">Preemption in safe points</h1>
+<p>Before 2013 there was no preemption and a goroutine could starve other goroutines.</p>
+<ul>
+<li>
+<p>In 2013 preemption was added sync to the prologue</p>
+</li>
+<li>
+<p>In 2020 async preemption was added: Works by sending a SIGURG signal to the thread where the goroutine is running
+Safepoints are:
+- end of loops, function prologues, call/syscall locations</p>
+<ul>
+<li>In linux all threads are equal even the main one, only difference is when you return from main there is asm code that calls exit
+int ret = main(); exit_group(ret)</li>
+<li>When SIGURG is caught by any thread the handler will check the  register context and look if the metadata (pclntab) marks it as a safepoint, if so, stores the context and stops the execution</li>
+</ul>
+</li>
+</ul>
+<p><a href="https://unskilled.blog/posts/preemption-in-go-an-introduction">https://unskilled.blog/posts/preemption-in-go-an-introduction</a></p>
+<h1 id="why-sync">why sync</h1>
+<ol>
+<li>Node’s philosophy</li>
+</ol>
+<p>Node.js is built on libuv, which is an event-driven async I/O library. It’s designed around the idea: &ldquo;Never block an OS thread, everything is async.&rdquo;</p>
+<ol start="2">
+<li>
+<p>How Node does it: Network I/O → always async via epoll/kqueue/IOCP (same as Go). File I/O on Linux → synchronous syscalls only 😬.
+libuv works around this by offloading file I/O to a thread pool. That thread pool does the blocking syscall, then pushes the result back into the event loop. So Node is “async everywhere” at the API level, but under the hood it sometimes uses blocking syscalls on a separate worker thread.</p>
+</li>
+<li>
+<p>Why Node chose async-only? Because of JavaScript:
+JavaScript is single-threaded (per event loop). If any syscall blocked the thread, the entire runtime would freeze. To avoid that, Node had no choice: it had to make everything async. So in Node, async isn’t just a design choice, it’s a necessity because the language itself doesn’t support lightweight concurrency primitives like goroutines.</p>
+</li>
+</ol>
+<h1 id="async-netpoll">Async netpoll</h1>
+<p>In go when using the async epoll the M&rsquo;s are not blocked so they can be reused or parked</p>
+<p>Parking can be done using futex = fast userspace mutex. It uses CAS (Compare and Swap) to check the user space exclusion without falling into kernel space. if there is a lock it still falls into syscall to sleep</p>
+<h1 id="goroutines">Goroutines</h1>
+<p>If the goroutine never exit but is not doing anything it will keep being scheduled and do nothing</p>
+<h1 id="channels">Channels</h1>
+<p>to create one:
+ch := make(chan int)
+a := &lt;-ch
+ch &lt;-b</p>
+<p>zero value to channel is nil</p>
+<p>To convert a chan to a receive only</p>
+<p>Invalid:
+ch := make(chan int)
+recv &lt;-chan int := ch</p>
+<p>Valid:
+ch := make(chan int)
+var recv &lt;-chan = ch</p>
+<p>Blocks if:</p>
+<ul>
+<li>channel is unbuffered and we write and no one reads</li>
+<li>channel is unbuffered and we read while there is no data</li>
+<li>channel is buffered but at capacity and we write</li>
+<li>channel is buffered but empty and we read</li>
+</ul>
+<p>reading from a closed channel never panics, the ok wll be false in the idiomatic sentence
+writing to a closed channel will panic. Also there is no way to check if it is closed cause it can cause race conditions</p>
+<p>Send Only channel:
+func MakeFoo(ch chan&lt;- int)</p>
+<p>Receive Only channel:
+func MakeBar(ch &lt;-chan int)</p>
+<p>this is valid but usless outside of testing/mocking:
+ch := make(chan&lt;- int)</p>
+<p>it is good practice to explicitly make the channels receive or send only.</p>
+<p>for-range with channels only have the &ldquo;value&rdquo; (there is no key or index since it is open ended)</p>
+<p>channels are closed with: close(ch).</p>
+<p>Reading from a closed channel suceeds!!! if buffered and there is data it can be read, if unbuffered or empty, the zero value is returned</p>
+<p>v, ok := &lt;-ch
+If ok is set to true, then the channel is open. If it is set to false, the channel is closed.</p>
+<ul>
+<li>If there is only one writer the responsibility for closing a channel lies with the goroutine that writes.</li>
+<li>If there are multiple writers: use a waitgroup</li>
+</ul>
+<p>Buffered channels:</p>
+<ul>
+<li>they work when you know exactly how many goroutines were launched and you want to collect the results</li>
+<li>when you want to limit the number of goroutines we launch or want to limit the amount of work queued up.</li>
+<li>backpressure: each slot in the buffer represents a token for processing</li>
+</ul>
+<p>Nil channel
+When using a select and one of the channel is closed a good practice is to set it as nil, so it will never &ldquo;match&rdquo; again thus saving the goroutine from reading zero values:</p>
+<p>for {
+select {
+case v, ok := &lt;-ch:
+if !ok {
+ch = nil // the channel was closed, skip it in further select iterations
+continue
+}
+case &lt;-done: //done signal received
+return
+}
+}</p>
+<p>Timeout Implementation (TODO: Add cancellation):</p>
+<p>func timeLimit() (int, error) {
+var result int
+var err error
+done := make(chan struct{})</p>
+<pre><code>go func() {
+    result, err = doSomeWork()
+    close(done)
+}()
+
+select {
+    case &lt;-done:
+      return result, err
+    case &lt;-time.After(2 * time.Second):
+      return 0, errors.New(&quot;work timed out&quot;)
+}
+</code></pre>
+<p>}</p>
+<h2 id="done-channel">Done channel</h2>
+<p>It is used to notify a go routine to abort and the goroutine can use the select statement to decide if it is time to exit
+done := make(chan struct{})</p>
+<p>&hellip;.</p>
+<p>close(done)</p>
+<p>Or with a closure:</p>
+<p>ch := make(chan int)
+done := make(chan struct{})
+cancel := func() {
+// other cleanup
+close(done)
+}</p>
+<p>the cancel function can be returned for the caller to cancel when it wishes</p>
+<h1 id="closures">Closures</h1>
+<p>In go previous to 1.22 the iterator variable (v) was reused which caused a bug:</p>
+<p>func main() {
+a := []int{2, 4, 6, 8, 10}
+ch := make(chan int, len(a))
+for _, v := range a {
+go func() {
+ch &lt;- v * 2  //always sent 20
+}()
+}
+}</p>
+<p>But in go greater than 1.22 the v is not reused and the captured variable works correctly
+Idiomatic Go encourages explicit data passing via function parameters.</p>
+<h1 id="select">select</h1>
+<p>Selects unlike switches runs a case that is ready randomly</p>
+<p>select {
+case v := &lt;-intCh:      // reads an int
+fmt.Print(v)
+case strCh &lt;- &ldquo;Hello&rdquo;:  //writes hello and then WORLD
+strCh &lt;- &ldquo;WORLD&rdquo;
+}</p>
+<p>Also the branches not being are is discarded.
+Having a default case inside a for-select loop is almost always the wrong thing to do. It will not sleep the goroutine so will consume noop CPU.</p>
+<p>select compiles to a call into the Go runtime (runtime.selectgo). which adds the goroutine to the channel queues and then deschedules it. once other goroutine do something to the channel the queued one is set in ready state for the scheduler to start it again.</p>
+<p>Select creates a randomized order of interest in the channels before going to park, so when it wakesup it will pick the one on the randomized list.</p>
+<h1 id="waitgroups">WaitGroups</h1>
+<p>The Done channel is used to wait for 1 other goroutine, but for multiples WaitGroups are needed.
+WaitGroups have a counter and a semaphore internally.</p>
+<p>var wg sync.WaitGroup          //zero value works
+wg.Add(3)</p>
+<p>go func(){ defer wg.Done() }<br>
+go func(){ defer wg.Done()   }
+go func(){ defer wg.Done()   }</p>
+<p>wg.Wait() //wait for everyone</p>
+<p>the wg cannot be passed directly to the goroutines since it will copy it and the original reference count will not be altered, use the closure or a pointer</p>
+<h1 id="once-function">Once function</h1>
+<p>var once sync.Once  // zero value is good enough, but need to define it outside of any function</p>
+<p>func MyFunc(){
+once.Do(func() {
+parser = initParser()
+})
+}</p>
+<h1 id="rwmutex">RWMutex</h1>
+<p>Golang provides a Mutex implementation in the sync package, and another for a RWMux, latter one will have two pairs of methods: (Lock, Unlock) which blocks everything, and (RLock, RUnlock) for the read only part</p>
+<ul>
+<li>If a writer (Lock) is waiting, new readers are blocked too, even if existing readers still hold the lock.
+This prevents writer starvation.</li>
+<li>In Java Locks are reentrant, in golang thei are not</li>
+</ul>
+<h1 id="syncmap">sync.Map</h1>
+<p>dsync.Map is Go’s concurrent map type, provided in the standard library (sync package).</p>
+<p>It’s designed to let multiple goroutines safely load, store, and delete keys without you needing to wrap a map with a sync.Mutex or sync.RWMutex.</p>
+<h1 id="syncatomic">sync.atomic</h1>
+<ul>
+<li>atomic.Load</li>
+<li>atomic.Store</li>
+<li>atomic.Add</li>
+<li>atomic.Swap</li>
+<li>atomic.CompareAndSwap</li>
+</ul>
+<h1 id="io">io</h1>
+<ul>
+<li>io.Reader</li>
+<li>io.Writer</li>
+<li>io.MultiReader</li>
+<li>io.LimitReader</li>
+<li>io.MultiWriter</li>
+</ul>
+<p>Use combination of interfaces to declare intent of the function instead of just passing a File</p>
+<h1 id="time">Time</h1>
+<p>time.Time has an internal timezone, dont use == to compare but use Equal method instead that takes the tz into account</p>
+<p>Dont use time.Tick, instead use time.NewTicker</p>
+<h1 id="modules">Modules</h1>
+<p>To FORCEFULLY downgrade a dependency the only real way to do it is using replace:</p>
+<p>replace github.com/some/dependency v1.5.0 =&gt; github.com/some/dependency v1.2.3</p>
+<p>Just making the dependency versionexplicit wont work if another dependency requires a higher version due to the principle of minimum version selection.</p>
+<h1 id="repositories">Repositories</h1>
+<p>use GOPRIVATE to define what modules should be downloaded directly and not using the google proxy</p>
+<h1 id="gob-vs-grpc">Gob vs GRPC</h1>
+<p>Use gob: for quick serialization, prototyping, or internal Go-only communication (e.g., writing structs to disk, IPC in Go).
+Use gRPC: for production microservices, cross-language systems, or when you need streaming, service contracts, and observability.</p>
+<h1 id="http">http</h1>
+<p>There are functions in the net/http package to make GET, HEAD, and POST calls. Avoid using these functions because they use the default client, which means they don’t set a request timeout.</p>
+<h1 id="contexts">Contexts</h1>
+<p>Many languages use threadlocal variables to store this kind of information, associating data to a specific operating system thread of execution. This does’t work in Go because goroutines don’t have unique identities that can be used to look up values</p>
+<p>Pass it as the first argument always</p>
+<p>Production code shouldn’t include context.TODO. It should be a placeholder only.</p>
+<p>Use context.Background() to get an empty instance</p>
+<p>To create a cancellable context, decorate using the context.WithCancel function. It is important to remember that any time
+you create a cancellable context, you must call the cancel function (even if everything went ok). It is fine to call it more than once.
+The context is never used to pass information out of deeper layers to higher layers</p>
+<p>context.WithTimeout A context that cancels after some time
+context.WithDeadline A fixed time where it will cancel. If you pass a time in the past to context.WithDeadline, the con‐
+text is created already canceled
+context.WithValue Factory method to create a context with value, Like the key for a map, the key for value must be comparable</p>
+<p>Parent timeouts govern over child timeouts</p>
+<p>select {
+case &lt;-ctx.Done():
+fmt.Println(&ldquo;canceled&rdquo;)
+return
+case resultCh &lt;- 42:
+fmt.Println(&ldquo;sent&rdquo;)
+}</p>
+<p>If ctx.Done() is already closed and resultCh has buffer space, then both cases are ready. The runtime will randomly pick one. So cancellation may not win deterministically if other cases are also ready.</p>
+<p>The Err method returns nil if the context is still active, or it returns one of two sentinel errors if the context has been canceled: context.Canceled and context.DeadlineExceeded.</p>
+<p>To avoid collisions with outside packages favor creating custom unexported types to add as values in the context</p>
+<p>The name of the function that creates a context with the value should start with ContextWith. The function that returns the value
+from the context should have a name that ends with FromContext</p>
+<h1 id="testing">Testing</h1>
+<p>t.Error and t.Errorf dont stop the test from runnning, while Fatal/Fatalf do.</p>
+<p>To stetup stuff before test a testMain can be used with testing.M:</p>
+<p>func TestMain(m *testing.M) { //this is invoked only once for all the tests in the package
+// setup
+&hellip;
+exitVal := m.Run()</p>
+<pre><code>// teardown
+os.Exit(exitVal)
+</code></pre>
+<p>}</p>
+<p>t.Cleanup
+Exist to cleanup resources for a single test, it runs LIFO wise when the test finishes:</p>
+<p>func helper(){
+t.Cleanup(func() {
+os.Remove(f.Name())
+})
+}</p>
+<p>test cached
+test are cached if no code was changed in the package, this can be overrided passing -count=1 to go test</p>
+<p>Table tests</p>
+<p>define a slice []struct{ name, expected, error  } then invoke t.Run</p>
+<p>for _, d := range slice {
+t.Run(d.name, func(t *testing.T) {
+&hellip;
+}
+}</p>
+<h2 id="tags">Tags</h2>
+<p>magic comments can be added to test files to make it conditionally run:</p>
+<p>// +build integ</p>
+<p>Then execute them with:</p>
+<p>go test -tags integ -v ./&hellip;</p>
+<h2 id="short">Short</h2>
+<p>there is a -short flag that runs only the short running tests, but the longs ones need to skip manually:
+if testing.Short() { t.Skip(&ldquo;this is a long one&rdquo;)}</p>
+<h2 id="coverage">coverage</h2>
+<p>to dump the coverage to a file:
+go test -v -cover -coverprofile=coverage.out</p>
+<p>To get an html report:
+go test -v -cover -html=report.htm</p>
+<h2 id="benchmarks">Benchmarks</h2>
+<p>There is a testing.B to do benchmarks, this type has everything to do a benchmark</p>
+<ul>
+<li>Always iterate from 0 to b.N:  for i := 0; i &lt; b.N; i++ {&hellip;}</li>
+<li>The functions will start with BenchmarkXXX</li>
+</ul>
+<p>it is ran using: go test -B</p>
+<p>It can be run similar to table tests:
+cases := []int{1, 10, 100, 1000, 10000, 100000}
+for _, v := range cases {
+b.Run( &ldquo;&rdquo;, theStuff(b))</p>
+<h1 id="race-conditions-checker">Race conditions checker</h1>
+<p>go test -race will show what data race are happening, altough it could only catch some of them</p>
+<p>Binaries can be generated with an embedded race checker (go build -race), the runtime will print race conditions to the console.</p>
+<h2 id="profiling">profiling</h2>
+<h2 id="generics">Generics</h2>
+<p>uses brackets, example:</p>
+<p>type Stack[T any]{&hellip;}</p>
+<p>any is not comparable (==, !=), a new interface is added called comparable:</p>
+<p>type Stack[T comparable]</p>
+<p>To limit what types can be used for an interface we use a type list:</p>
+<p>type MyIface interface {
+type int, float64, string, MyStruct
+}</p>
+<p>An interface with a type list can only be used for a type parameter.</p>
+<h2 id="gorm">GORM</h2>
+<p>use -&gt; to indicate read only:</p>
+<p>type _ struct {
+InternalID     *uint           <code>gorm:&quot;-&gt;column:internal_id;&quot;</code>
+}</p>
+<h2 id="others">Others</h2>
+<ul>
+<li>reflect to manipulate types and values</li>
+<li>unsafe to manipulate raw memory</li>
+</ul>
+<h2 id="common-antipatterns">Common antipatterns</h2>
+<h1 id="tiny-packages-syndrome-1---too-many-folders">Tiny packages syndrome 1 - too many folders:</h1>
+<p>pkg/
+dao/
+dao.go
+api/
+api.go</p>
+<p>Tiny packages syndrome 2 - public API scattered in multiple files.</p>
+<h1 id="premature-exportation">Premature Exportation</h1>
+<p>Part 1. Making every type, constant, function exported.
+Part 2. Not using &lsquo;internal&rsquo;</p>
+<h1 id="package-util">Package util</h1>
+<p>Having a miscelaneous package like util.</p>
+<ul>
+<li>It doesnt describe the purpose of the package.</li>
+</ul>
+<h1 id="avoid-stuttering">Avoid stuttering</h1>
+<p>random.GenerateRandomInt vs
+random.GenerateInt</p>
+<h1 id="config-structs">Config Structs</h1>
+<p>Having a config with all the fields and passing it around, some functions will not use the majority of fields.
+Instead use variadic functional options passing.</p>
+<h1 id="pointer-all-the-things">Pointer all the things</h1>
+<h1 id="using-contextvalue-everywhere">Using context.Value everywhere</h1>
+<h1 id="if-then-else">If then else,</h1>
+<ul>
+<li>Handle errors early and return often</li>
+<li>Prefer return without else when if-else: keep the happy paths de-dented</li>
+</ul>
+<h1 id="dont-panic">Don&rsquo;t panic</h1>
+<ul>
+<li>Never panic from a Lib unless it cannot be handled from an upstream caller</li>
+</ul>
+<h1 id="dont-overuse-interfaces">Dont overuse interfaces</h1>
+<p>Keep Role Based interfaces, small with few methods</p>
+<h1 id="naked-returns">Naked returns</h1>
+<p>Avoid using them as much as possible
+(a, b) {
+var a,b = 0
+return //no a,b so they use the vars
+}</p>
+<h1 id="empty-intefaces">Empty intefaces</h1>
+<p>They are used to accept &ldquo;any&rdquo;, but maybe what you need is a behaviour? (method interface)</p>
+<ul class="pa0">
+  
+   <li class="list di">
+     <a href="../../tags/golang/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Golang</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="//localhost:1313/" >
+    &copy;  Jorge Andres Tafur 2025 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

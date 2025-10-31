@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Golang on Jorge Andres Tafur</title>
+    <link>//localhost:1313/tags/golang/</link>
+    <description>Recent content in Golang on Jorge Andres Tafur</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 15 Aug 2025 20:22:05 -0500</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Notes on Golang</title>
+      <link>//localhost:1313/posts/go_notes/</link>
+      <pubDate>Fri, 15 Aug 2025 20:22:05 -0500</pubDate>
+      <guid>//localhost:1313/posts/go_notes/</guid>
+      <description>&lt;h2 id=&#34;design-principles&#34;&gt;Design Principles&lt;/h2&gt;&#xA;&lt;p&gt;&lt;em&gt;Orthogonality&lt;/em&gt;: Pieces are independent to each other.&lt;/p&gt;&#xA;&lt;p&gt;&lt;em&gt;Simplicity&lt;/em&gt;: less techniques (inheritance, vtable overrides).&lt;/p&gt;&#xA;&lt;p&gt;&lt;em&gt;Readability&lt;/em&gt;: Reduce clutter and noise.&lt;/p&gt;&#xA;&lt;h2 id=&#34;untyped-constants&#34;&gt;Untyped constants&lt;/h2&gt;&#xA;&lt;p&gt;An untyped constant is pretty much a literal; It doesnt have a type of its own altough it haves a default type that is used when no other type can be inferred.&lt;/p&gt;&#xA;&lt;p&gt;For example this works:&lt;/p&gt;&#xA;&lt;p&gt;const x = 1&#xA;var y int = x&#xA;var z byte = x&#xA;var w float = x&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

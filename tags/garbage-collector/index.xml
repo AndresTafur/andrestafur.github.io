@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Garbage Collector on Jorge Andres Tafur</title>
+    <link>//localhost:1313/tags/garbage-collector/</link>
+    <description>Recent content in Garbage Collector on Jorge Andres Tafur</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 15 Aug 2025 20:22:05 -0500</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/garbage-collector/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Garbage collections</title>
+      <link>//localhost:1313/posts/gc/</link>
+      <pubDate>Fri, 15 Aug 2025 20:22:05 -0500</pubDate>
+      <guid>//localhost:1313/posts/gc/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://cacm.acm.org/research/the-tail-at-scale/&#34;&gt;https://cacm.acm.org/research/the-tail-at-scale/&lt;/a&gt;&#xA;&lt;a href=&#34;https://go.dev/blog/ismmkeynote&#34;&gt;https://go.dev/blog/ismmkeynote&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.ardanlabs.com/blog/2017/05/language-mechanics-on-stacks-and-pointers.html&#34;&gt;https://www.ardanlabs.com/blog/2017/05/language-mechanics-on-stacks-and-pointers.html&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Golang arenas</title>
+      <link>//localhost:1313/posts/go_arena/</link>
+      <pubDate>Fri, 15 Aug 2025 20:22:05 -0500</pubDate>
+      <guid>//localhost:1313/posts/go_arena/</guid>
+      <description>&lt;h1 id=&#34;memory-allocation&#34;&gt;Memory allocation&lt;/h1&gt;</description>
+    </item>
+  </channel>
+</rss>

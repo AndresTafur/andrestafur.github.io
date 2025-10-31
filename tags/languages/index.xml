@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Languages on Jorge Andres Tafur</title>
+    <link>//localhost:1313/tags/languages/</link>
+    <description>Recent content in Languages on Jorge Andres Tafur</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 15 Aug 2025 20:22:05 -0500</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/languages/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Garbage collections</title>
+      <link>//localhost:1313/posts/gc/</link>
+      <pubDate>Fri, 15 Aug 2025 20:22:05 -0500</pubDate>
+      <guid>//localhost:1313/posts/gc/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://cacm.acm.org/research/the-tail-at-scale/&#34;&gt;https://cacm.acm.org/research/the-tail-at-scale/&lt;/a&gt;&#xA;&lt;a href=&#34;https://go.dev/blog/ismmkeynote&#34;&gt;https://go.dev/blog/ismmkeynote&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.ardanlabs.com/blog/2017/05/language-mechanics-on-stacks-and-pointers.html&#34;&gt;https://www.ardanlabs.com/blog/2017/05/language-mechanics-on-stacks-and-pointers.html&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Golang arenas</title>
+      <link>//localhost:1313/posts/go_arena/</link>
+      <pubDate>Fri, 15 Aug 2025 20:22:05 -0500</pubDate>
+      <guid>//localhost:1313/posts/go_arena/</guid>
+      <description>&lt;h1 id=&#34;memory-allocation&#34;&gt;Memory allocation&lt;/h1&gt;</description>
+    </item>
+    <item>
+      <title>Literals vs immutability</title>
+      <link>//localhost:1313/posts/literals_immutability/</link>
+      <pubDate>Fri, 15 Aug 2025 20:22:05 -0500</pubDate>
+      <guid>//localhost:1313/posts/literals_immutability/</guid>
+      <description>&lt;h2 id=&#34;immutability-and-constants&#34;&gt;Immutability and constants&lt;/h2&gt;&#xA;&lt;p&gt;A constant var is a variable that is known at compile-time, in java it is defined as &amp;lsquo;static final&amp;rsquo;, in golang it is defined with &amp;lsquo;const&amp;rsquo;.&lt;/p&gt;&#xA;&lt;p&gt;On the other hand Immutability is about not modifying a variable even if it is created and assigned at run-time, in java it would be &amp;lsquo;final&amp;rsquo; again but these two concepts are entirely different.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Pass by reference is not passing a *pointer* </title>
+      <link>//localhost:1313/posts/pass_ref_vs_pointer/</link>
+      <pubDate>Fri, 15 Aug 2025 20:22:05 -0500</pubDate>
+      <guid>//localhost:1313/posts/pass_ref_vs_pointer/</guid>
+      <description>&lt;p&gt;Passing by reference is NOT the same as passing a POINTER&lt;/p&gt;&#xA;&lt;p&gt;in Java:&lt;/p&gt;&#xA;&lt;p&gt;theObj&#xA;method(theObj)&lt;/p&gt;&#xA;&lt;p&gt;public void method(obj MyObject){&#xA;obj.name = &amp;ldquo;blah&amp;rdquo;;&#xA;obj = null;  // This doesn&amp;rsquo;t change theObj cause obj is a pointer is not a reference!&#xA;}&lt;/p&gt;&#xA;&lt;p&gt;This can be seen in Ada/Fortran/Pascal&lt;/p&gt;&#xA;&lt;p&gt;subroutine swap(a, b)&#xA;integer :: a, b&#xA;integer :: tmp&#xA;tmp = a&#xA;a = b&#xA;b = tmp&#xA;end subroutine&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Performance optimization</title>
+      <link>//localhost:1313/posts/perf_opt/</link>
+      <pubDate>Fri, 15 Aug 2025 20:22:05 -0500</pubDate>
+      <guid>//localhost:1313/posts/perf_opt/</guid>
+      <description>&lt;p&gt;&amp;ldquo;CPU&amp;rsquo;s are now hyper optimized to eat bad code.&amp;rdquo; - Casey Muratori&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.forrestthewoods.com/blog/memory-bandwidth-napkin-math/&#34;&gt;https://www.forrestthewoods.com/blog/memory-bandwidth-napkin-math/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;mechanical sympathy&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

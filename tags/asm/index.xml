@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Asm on Jorge Andres Tafur</title>
+    <link>//localhost:1313/tags/asm/</link>
+    <description>Recent content in Asm on Jorge Andres Tafur</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 15 Aug 2025 20:22:05 -0500</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/asm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Atomic operations</title>
+      <link>//localhost:1313/posts/main-atomic/</link>
+      <pubDate>Fri, 15 Aug 2025 20:22:05 -0500</pubDate>
+      <guid>//localhost:1313/posts/main-atomic/</guid>
+      <description>&lt;p&gt;Modern hardware has the following atomic operations&lt;/p&gt;&#xA;&lt;h1 id=&#34;test-and-set-tas&#34;&gt;Test-and-Set (TAS)&lt;/h1&gt;&#xA;&lt;h1 id=&#34;compare-and-swap-cas&#34;&gt;Compare-and-Swap (CAS)&lt;/h1&gt;&#xA;&lt;h1 id=&#34;compare-and-exchange-cmpxchg&#34;&gt;Compare-and-Exchange (CMPXCHG)&lt;/h1&gt;&#xA;&lt;h1 id=&#34;fetch-and-add-faa&#34;&gt;Fetch-and-Add (FAA)&lt;/h1&gt;&#xA;&lt;h1 id=&#34;swap-atomic-exchange-xchg&#34;&gt;Swap (Atomic Exchange, XCHG)&lt;/h1&gt;&#xA;&lt;h1 id=&#34;load-linked-ll&#34;&gt;Load-Linked (LL)&lt;/h1&gt;&#xA;&lt;h1 id=&#34;store-conditional-sc&#34;&gt;Store-Conditional (SC)&lt;/h1&gt;</description>
+    </item>
+  </channel>
+</rss>

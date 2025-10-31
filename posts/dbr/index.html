@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>DBR | Jorge Andres Tafur</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Cross cloud DBR
+Cross-cloud sync involves:
+Replication: Copying data from one cloud to another.
+Synchronization: Keeping changes consistent (two-way or one-way).
+Transformation: Converting data formats or schemas between systems.
+Conflict resolution: Handling simultaneous updates in different clouds.
+Latency management: Ensuring timely propagation while avoiding overload.
+🧩 Typical Architectures
+Pattern	Description	Use Case
+Active–Passive Replication	Primary data lives in one cloud; replicas in others for backup or disaster recovery.	Multi-cloud DR strategy.
+Active–Active Sync	Multiple writable nodes across clouds; data is synchronized bidirectionally.	Global apps needing low-latency writes.
+Event-based Sync	Data changes trigger events (e.g., via Kafka or Pub/Sub) propagated across clouds.	Microservices or streaming pipelines.
+API/ETL Integration	Scheduled or triggered sync using APIs, ETL jobs, or data lakes.	Batch data pipelines, analytics workloads.">
+    <meta name="generator" content="Hugo 0.152.2">
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="../../ananke/css/main.min.css" >
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="//localhost:1313/posts/dbr/">
+    
+
+    <meta property="og:url" content="//localhost:1313/posts/dbr/">
+  <meta property="og:site_name" content="Jorge Andres Tafur">
+  <meta property="og:title" content="DBR">
+  <meta property="og:description" content="Cross cloud DBR Cross-cloud sync involves:
+Replication: Copying data from one cloud to another.
+Synchronization: Keeping changes consistent (two-way or one-way).
+Transformation: Converting data formats or schemas between systems.
+Conflict resolution: Handling simultaneous updates in different clouds.
+Latency management: Ensuring timely propagation while avoiding overload.
+🧩 Typical Architectures Pattern	Description	Use Case Active–Passive Replication	Primary data lives in one cloud; replicas in others for backup or disaster recovery.	Multi-cloud DR strategy. Active–Active Sync	Multiple writable nodes across clouds; data is synchronized bidirectionally.	Global apps needing low-latency writes. Event-based Sync	Data changes trigger events (e.g., via Kafka or Pub/Sub) propagated across clouds.	Microservices or streaming pipelines. API/ETL Integration	Scheduled or triggered sync using APIs, ETL jobs, or data lakes.	Batch data pipelines, analytics workloads.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-08-15T20:22:05-05:00">
+    <meta property="article:modified_time" content="2025-08-15T20:22:05-05:00">
+
+  <meta itemprop="name" content="DBR">
+  <meta itemprop="description" content="Cross cloud DBR Cross-cloud sync involves:
+Replication: Copying data from one cloud to another.
+Synchronization: Keeping changes consistent (two-way or one-way).
+Transformation: Converting data formats or schemas between systems.
+Conflict resolution: Handling simultaneous updates in different clouds.
+Latency management: Ensuring timely propagation while avoiding overload.
+🧩 Typical Architectures Pattern	Description	Use Case Active–Passive Replication	Primary data lives in one cloud; replicas in others for backup or disaster recovery.	Multi-cloud DR strategy. Active–Active Sync	Multiple writable nodes across clouds; data is synchronized bidirectionally.	Global apps needing low-latency writes. Event-based Sync	Data changes trigger events (e.g., via Kafka or Pub/Sub) propagated across clouds.	Microservices or streaming pipelines. API/ETL Integration	Scheduled or triggered sync using APIs, ETL jobs, or data lakes.	Batch data pipelines, analytics workloads.">
+  <meta itemprop="datePublished" content="2025-08-15T20:22:05-05:00">
+  <meta itemprop="dateModified" content="2025-08-15T20:22:05-05:00">
+  <meta itemprop="wordCount" content="322">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="DBR">
+  <meta name="twitter:description" content="Cross cloud DBR Cross-cloud sync involves:
+Replication: Copying data from one cloud to another.
+Synchronization: Keeping changes consistent (two-way or one-way).
+Transformation: Converting data formats or schemas between systems.
+Conflict resolution: Handling simultaneous updates in different clouds.
+Latency management: Ensuring timely propagation while avoiding overload.
+🧩 Typical Architectures Pattern	Description	Use Case Active–Passive Replication	Primary data lives in one cloud; replicas in others for backup or disaster recovery.	Multi-cloud DR strategy. Active–Active Sync	Multiple writable nodes across clouds; data is synchronized bidirectionally.	Global apps needing low-latency writes. Event-based Sync	Data changes trigger events (e.g., via Kafka or Pub/Sub) propagated across clouds.	Microservices or streaming pipelines. API/ETL Integration	Scheduled or triggered sync using APIs, ETL jobs, or data lakes.	Batch data pipelines, analytics workloads.">
+
+	
+  </head><body class="ma0 avenir bg-near-white development">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="../../" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        Jorge Andres Tafur
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="../../" title="Home page">
+              Home
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="../../posts/" title="Posts page">
+              Posts
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  
+  <article class="flex-l mw8 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">DBR</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2025-08-15T20:22:05-05:00">August 15, 2025</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h1 id="cross-cloud-dbr">Cross cloud DBR</h1>
+<p>Cross-cloud sync involves:</p>
+<p>Replication: Copying data from one cloud to another.</p>
+<p>Synchronization: Keeping changes consistent (two-way or one-way).</p>
+<p>Transformation: Converting data formats or schemas between systems.</p>
+<p>Conflict resolution: Handling simultaneous updates in different clouds.</p>
+<p>Latency management: Ensuring timely propagation while avoiding overload.</p>
+<p>🧩 Typical Architectures
+Pattern	Description	Use Case
+Active–Passive Replication	Primary data lives in one cloud; replicas in others for backup or disaster recovery.	Multi-cloud DR strategy.
+Active–Active Sync	Multiple writable nodes across clouds; data is synchronized bidirectionally.	Global apps needing low-latency writes.
+Event-based Sync	Data changes trigger events (e.g., via Kafka or Pub/Sub) propagated across clouds.	Microservices or streaming pipelines.
+API/ETL Integration	Scheduled or triggered sync using APIs, ETL jobs, or data lakes.	Batch data pipelines, analytics workloads.</p>
+<p>🧰 Common Tools and Frameworks
+🧳 Vendor-specific</p>
+<p>AWS DataSync → Syncs to Azure, GCP, or on-prem via S3/NFS.</p>
+<p>Azure Data Factory → Connectors for AWS S3, GCP BigQuery, Snowflake, etc.</p>
+<p>Google Data Fusion / Transfer Service → Cross-cloud and hybrid sync options.</p>
+<p>🪶 Open Source / Vendor-neutral</p>
+<p>Debezium + Kafka Connect → Change Data Capture (CDC) from MySQL, Postgres, MongoDB, etc.</p>
+<p>Airbyte / Singer / Meltano → ETL/ELT pipelines across clouds.</p>
+<p>Rclone → File-level sync between S3, GCS, Azure Blob, etc.</p>
+<p>MinIO Gateway / Replication → Object storage replication across different clouds.</p>
+<p>Litestream / LiteFS → SQLite replication for edge/hybrid cases.</p>
+<p>🧬 Database-native cross-cloud</p>
+<p>CockroachDB / YugabyteDB / TiDB → Natively distributed SQL with cross-region replication.</p>
+<p>MongoDB Atlas Multi-Cloud Clusters → A single cluster spanning AWS, Azure, and GCP.</p>
+<p>Cassandra / ScyllaDB → Multi-cloud replication built in.</p>
+<h1 id="docker-container">Docker container</h1>
+<p>🏗️ Vendor-specific</p>
+<p>AWS ECR → Replication Rules</p>
+<p>Can replicate to another region or account, even cross-cloud via public endpoint.</p>
+<p>Example: replicate ECR → GCR using an AWS Lambda trigger.</p>
+<p>GCP Artifact Registry / GCR</p>
+<p>Offers regional replication and API access for external sync jobs.</p>
+<p>Azure Container Registry (ACR)</p>
+<p>Has geo-replication and supports pull from other registries via az acr import.</p>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="//localhost:1313/" >
+    &copy;  Jorge Andres Tafur 2025 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>
